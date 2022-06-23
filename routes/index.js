@@ -7,6 +7,7 @@ var router = express.Router();
 router.get('/',controlleurAccueil.AccueilGet);
 router.get('/inscription',controlleurAccueil.InscriptionGet);
 router.get('/transfert',controlleurAccueil.GetTransfert);
-router.get('/confirmer_le_transfert',controlleurAccueil.GetValider)
+router.get('/confirmer_le_transfert',controlleurAccueil.GetValider);
+router.get('/historique',controlleurAccueil.Historique)
 
 module.exports = router;

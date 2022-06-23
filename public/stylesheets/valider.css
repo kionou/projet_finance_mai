@@ -3,17 +3,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* transition: all 0.4s; */
-  font-family: -apple-system,
-  BlinkMacSystemFont,
-  "Segoe UI",
-  Roboto,
-  Helvetica,
-  Arial,
-  sans-serif,
-  "Apple Color Emoji",
-  "Segoe UI Emoji",
-  "Segoe UI Symbol";
 }
 
 .nav-content{
@@ -23,14 +12,20 @@
 
 /* Navbar section */
 
+header{
+  width: 100%;
+  height: 100px;
+  border: 1px solid green;
+}
+
 .nav{
   width: 100%;
-  height: 65px;
+  height: 100%;
   /* position: fixed; */
   line-height: 65px;
   text-align: center;
   background-color: rgba(0,0,255,0.8);
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
 .nav div.logo{
@@ -218,9 +213,9 @@
 
 
 .container{
-    position: relative;
+    /* position: relative; */
     width: 100%;
-    height: 100vh;
+    height: auto;
     border: 1px solid red;
     display: flex;
     flex-direction: column;
@@ -228,32 +223,37 @@
 }
 
 .container-content{
-    width: 55%;
-    height: 100%;
-    border: 1px solid blue;
-    display: flex;
+    width: 500px;
+    height: auto;
+    /* border: 1px solid blue; */
+    padding: 10px;
+    /* display: flex;
     justify-content: center;
     align-items: center;
+    position: relative; */
 
 }
 
-.container .content{
-    position: absolute;
+.content{
+    /* position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
-    width: 50%;
-    /* border: 1px solid blue; */
+    transform: translate(-50%,-50%); */
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid rgb(7, 124, 163); */
     padding: 10px 10px 40px 10px;
     border-radius: 0.5em;
-	box-shadow: 0 0 1em 0 rgba(51,51,51,0.25);
+	  box-shadow: 0 0 1em 0 rgba(51,51,51,0.25);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 }
 .infoperso{
     padding: 30px;
+    /* border: 1px solid rebeccapurple; */
 }
 
 .content h4{
@@ -303,13 +303,15 @@ width : 100%;
     cursor: pointer;
 }
 
-@media (max-width: 768px){
-    .container .content{
+@media (max-width: 540px){
+    .container-content{
         width: 100%;
     }
 
-    .contenu{
+    .contenu,h4{
         font-size:15px;
     }
+
+   
 
 }

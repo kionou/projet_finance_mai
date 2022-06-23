@@ -8,17 +8,43 @@
     <title>transfert</title>
 </head>
 <body>
+    <header>
+        <nav class="nav">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="/">YourLogo</a>
+                </div>
+                <div class="main_list" id="mainListDiv">
+                    <ul>
+                        <li><a href="/">Acceuil</a></li>
+                        <li><a href="#">A propos</a></li>
+                        <li><a href="/inscription">Inscription</a></li>
+                    </ul>
+                </div>
+                <div class="media_button">
+                    <button class="main_media_button" id="mediaButton">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <div class="container">
         <div class="content">
             <form class="formulaire" action="">
                 <input type="text" name="nom" placeholder="Nom complet">
                 <input type="tel" name="numero" placeholder="Téléphone">
-                <input type="tel" name="montant" placeholder="Montant eEnvoyé">
+                <input type="tel" name="montant" placeholder="Montant Envoyé">
                 <input type="text" name="montant_recu" placeholder="Montant Reçu">
-                <button>envoyer</button>
+                <button>Envoyer</button>
             </form>
         </div>
 
     </div>
+
+  <script src="/javascripts/app.js"></script>
 </body>
 </html>

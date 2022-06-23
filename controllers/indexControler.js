@@ -21,6 +21,11 @@ const controlleurAccueil = class {
         console.log('bonjour')
         res.render('valider')
     }
+
+    static Historique =(req=request,res=response) =>{
+        console.log('bonjour')
+        res.render('historique')
+    }
 }
 
 
