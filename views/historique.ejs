@@ -17,8 +17,10 @@
                 <div class="main_list" id="mainListDiv">
                     <ul>
                         <li><a href="/">A propos</a></li>
-                        <li><a href="#">Kionou</a></li>
-                        <li><a href="/">Déconnection</a></li>
+                        <% if (typeof data !="undefined" && data.nom) { %>
+                        <li><a href="#"> <%= data.nom %> </a></li>   
+                          <% }%>
+                          <li onclick="logout()"><a href="/logout" >deconnecter</a></li>
                     </ul>
                 </div>
                 <div class="media_button">
@@ -36,7 +38,7 @@
        <div class="content">
         <div class="historique">
             <div class="transfert">
-                <a href="" class="btndetail">Effectuez un transfert</a>
+                <a href="/transfert" class="btndetail">Effectuez un transfert</a>
             </div>
             <div class="contenu">
                 <div class="detail">
@@ -63,23 +65,30 @@
             <div class="solde">
                 <p>1020000 F CFA</p>
             </div>
+            <% if (success =='') { %>
+                <div class="noresult">
+                  <p>Aucun resultat trouvé(s) !</p>
+                </div>
+            <% } else if (success ){%>
+                <% success.forEach(function(user){ %>
             <div id="contenu">
                 <p class="un">Nom: </p>
-                <p class="deux">kionou</p>
+                <p class="deux"><%= user.nom %></p>
             </div>
             <div id="contenu">
                 <p class="un">Prenom: </p>
-                <p class="deux">Mamadou</p>
+                <p class="deux"><%= user.prenom %></p>
             </div>
             <div id="contenu">
                 <p class="un">Email: </p>
-                <p class="deux">kionouMamadou@gmail.com</p>
+                <p class="deux"><%= user.email %></p>
             </div>
             <div id="contenu">
                 <p class="un">Numéro: </p>
-                <p class="deux">0757408303</p>
+                <p class="deux"><%= user.numero %></p>
             </div>
-            
+            <% }); %>
+            <% } %>
         </div>
        </div>
     </div>

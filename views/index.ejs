@@ -44,8 +44,24 @@
           </a>
         </h1>
       </header> -->
+      <% if (typeof alerte !="undefined" && alerte) { %>
+        <div class="validation">
+          <%= alerte %> <br>
+        </div>
+      <% }%>
+      <% if (typeof alert !="undefined" && alert.email) { %>
+        <div class="validation">
+          <%= alert.email.msg %> <br>
+        </div>
+      <% }%>
+
+      <% if (typeof alert !="undefined" && alert.password) { %>
+        <div class="validation">
+          <%= alert.password.msg %> <br>
+        </div>
+      <% }%>
       <h1 class="text-center">Register</h1>
-      <form class="registration-form">
+      <form class="registration-form" method="post" action="/">
      
         <label>
           <span class="label-text">Adresse Email</span>
@@ -59,7 +75,7 @@
           <input type="password" name="password">
         </label>
         <div class="text-center">
-          <button class="submit" name="register">Connecter</button>
+          <button class="submit">Connecter</button>
         </div>
       </form>
     </div>

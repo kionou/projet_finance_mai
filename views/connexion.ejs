@@ -44,8 +44,37 @@
           </a>
         </h1>
       </header> -->
+      <% if (typeof alert !="undefined" && alert.nom) { %>
+        <div class="validation">
+          <%= alert.nom.msg %> <br>
+        </div>
+      <% }%>
+
+      <% if (typeof alert !="undefined" && alert.prenom) { %>
+        <div class="validation">
+          <%= alert.prenom.msg %> <br>
+        </div>
+      <% }%>
+
+      <% if (typeof alert !="undefined" && alert.email) { %>
+        <div class="validation">
+          <%= alert.email.msg %> <br>
+        </div>
+      <% }%>
+
+      <% if (typeof alert !="undefined" && alert.numero) { %>
+        <div class="validation">
+          <%= alert.numero.msg %> <br>
+        </div>
+      <% }%>
+
+      <% if (typeof alert !="undefined" && alert.password) { %>
+        <div class="validation">
+          <%= alert.password.msg %> <br>
+        </div>
+      <% }%>
       <h1 class="text-center">Register</h1>
-      <form class="registration-form">
+      <form class="registration-form" method="post" action="/inscription">
         <label class="col-one-half">
           <span class="label-text">Nom</span>
           <input type="text" name="nom">
@@ -70,7 +99,7 @@
           <input type="password" name="password">
         </label>
         <div class="text-center">
-          <button class="submit" name="register">S'inscrir</button>
+          <button class="submit" >S'inscrir</button>
         </div>
       </form>
     </div>

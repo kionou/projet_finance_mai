@@ -16,9 +16,11 @@
                 </div>
                 <div class="main_list" id="mainListDiv">
                     <ul>
-                        <li><a href="/">Acceuil</a></li>
-                        <li><a href="#">A propos</a></li>
-                        <li><a href="/inscription">Inscription</a></li>
+                        <li><a href="/">A propos</a></li>
+                        <% if (typeof data !="undefined" && data.nom) { %>
+                        <li><a href="#"> <%= data.nom %> </a></li>   
+                          <% }%>
+                          <li onclick="logout()"><a href="/logout" >deconnecter</a></li>
                     </ul>
                 </div>
                 <div class="media_button">
@@ -34,11 +36,21 @@
 
     <div class="container">
         <div class="content">
-            <form class="formulaire" action="">
-                <input type="text" name="nom" placeholder="Nom complet">
+            <form class="formulaire" action="/transfert" method="post">
+                <input type="text" name="nom" placeholder="Nom ">
+                <input type="text" name="prenom" placeholder="Prenom ">
                 <input type="tel" name="numero" placeholder="Téléphone">
-                <input type="tel" name="montant" placeholder="Montant Envoyé">
-                <input type="text" name="montant_recu" placeholder="Montant Reçu">
+                <input class="solde" type="tel" name="montant" placeholder="Montant Envoyé">
+                <input class="reduction" type="text" name="montant_recu" placeholder="Montant Reçu">
+                <p>Frais = 1% du montant</p>
+                <input type="hidden" class="frais" name="frais" value="">
+                <% if (typeof data !="undefined" && data.id) { %>
+                    <input type="hidden" name="id" value=" <%= data.id %>">
+                  <% }%>
+
+                  <% if (typeof data !="undefined" && data.numero) { %>
+                    <input type="hidden" name="numero_user" value="<%= data.numero %>" >
+                  <% }%>
                 <button>Envoyer</button>
             </form>
         </div>

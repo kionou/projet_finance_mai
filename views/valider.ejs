@@ -16,9 +16,11 @@
                 </div>
                 <div class="main_list" id="mainListDiv">
                     <ul>
-                        <li><a href="/">Acceuil</a></li>
-                        <li><a href="#">A propos</a></li>
-                        <li><a href="/">Connexion</a></li>
+                        <li><a href="/">A propos</a></li>
+                        <% if (typeof data !="undefined" && data.nom) { %>
+                        <li> <%= data.nom %> </li>   
+                          <% }%>
+                          <li onclick="logout()"><a href="/logout" >deconnecter</a></li>
                     </ul>
                 </div>
                 <div class="media_button">
@@ -35,48 +37,85 @@
        
         <div class="container-content">
             <div class="content">
+                <% if (success =='') { %>
+                    <div class="noresult">
+                      <p>Aucun resultat trouvé(s) !</p>
+                    </div>
+                <% } else if (success ){%>
+                    <% success.forEach(function(user){ %>
                 <div class="infoperso">
                     <h4>INFORMATION PERSONNELLE</h4>
                     <div class="contenu">
-                        <p>Nom : <span>Kionou</span> </p>
+                        <p>Nom : <span><%= user.nom %></span> </p>
                     </div>
                     <div class="contenu">
-                        <p>Prenom : <span>Mamadou</span> </p>
+                        <p>Prenom : <span><%= user.prenom %></span> </p>
                     </div>
                     <div class="contenu">
-                        <p>Email : <span>Kionoumamadou@gmail.com</span> </p>
+                        <p>Email : <span><%= user.email %></span> </p>
                     </div>
                     <div class="contenu">
-                        <p>Numéro : <span>0757408303</span> </p>
+                        <p>Numéro : <span><%= user.numero %></span> </p>
                     </div>
                 </div>
+                <% }); %>
+                <% } %>
                 <div class="trait_dessus"></div>
                 <div class="infoperso">
                     <h4>INFORMATION DU DESTINATAIRE </h4>
                     <div class="contenu">
-                        <p>Nom : <span>Kionou</span> </p>
+                        <% if (typeof data !="undefined" && data.nom) { %>
+                            <p>Nom : <span><%= data.nom %></span> </p>
+                         <% }%>
+                        
                     </div>
                     <div class="contenu">
-                        <p>Prenom : <span>Mamadou</span> </p>
+                        <% if (typeof data !="undefined" && data.prenom) { %>
+                            <p>Prenom : <span><%= data.prenom %></span> </p>
+                         <% }%>
+                        
                     </div>
                     <div class="contenu">
-                        <p>Numéro : <span>0757408303</span> </p>
+                        <% if (typeof data !="undefined" && data.numero) { %>
+                            <p>Numéro : <span><%= data.numero %></span> </p>
+                        <% }%>
+                       
                     </div>
                 </div>
                 <div class="trait_dessus"></div>
                 <div class="infoperso">
                     <h4>INFORMATION DU TRANSFERT </h4>
                     <div class="contenu">
-                        <p>Montant Envoyé : <span>10000 F CFA</span> </p>
+                        <% if (typeof data !="undefined" && data.montant) { %>
+                            <p>Montant Envoyé : <span><%= data.montant %> F CFA</span> </p>
+                        <% }%>
+                        
                     </div>
                     <div class="contenu">
-                        <p>Montant Reçu : <span>10000 F CFA</span> </p>
+                        <% if (typeof data !="undefined" && data.montant_recu) { %>
+                            <p>Montant Reçu : <span><%= data.montant_recu %> F CFA</span> </p>
+                        <% }%>
+                        
                     </div>
                     <div class="contenu">
-                        <p>Frais de Transfert : <span>1OO F CFA</span> </p>
+                        <% if (typeof data !="undefined" && data.frais) { %>
+                            <p>Frais de Transfert : <span><%= data.frais %> F CFA</span> </p>
+                        <% }%>
+                        
                     </div>
                 </div>
-                <form action="">
+                <form action="/confirmer_le_transfert" method="post">
+                    <% if (typeof data !="undefined" && data.numero) { %>
+                        <input type="hidden" name="numero" value="<%= data.numero %> ">
+                    <% }%>
+
+                    <% if (typeof data !="undefined" && data.montant_recu) { %>
+                        <input type="hidden" name="montant_recu" value="<%= data.montant_recu %> ">
+                    <% }%>
+
+                    <% if (typeof data !="undefined" && data.numero_user) { %>
+                        <input type="hidden" name="numero_user" value="<%= data.numero_user%> ">
+                    <% }%>
                     <div class="btn">
                         <button>Valider</button>
                     </div>

@@ -231,6 +231,10 @@
     align-items: center;
     padding: 10px 10px 30px;
   }
+
+  .validation{
+    color: #f53a25;
+  }
   
   /* formulaire debut  */
   
