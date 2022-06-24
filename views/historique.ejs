@@ -62,15 +62,16 @@
                 </div>
         </div>
         <div class="infouser">
-            <div class="solde">
-                <p>1020000 F CFA</p>
-            </div>
+           
             <% if (success =='') { %>
                 <div class="noresult">
                   <p>Aucun resultat trouvé(s) !</p>
                 </div>
             <% } else if (success ){%>
                 <% success.forEach(function(user){ %>
+            <div class="solde">
+                <p><%= user.solde %> F CFA</p>
+            </div>
             <div id="contenu">
                 <p class="un">Nom: </p>
                 <p class="deux"><%= user.nom %></p>

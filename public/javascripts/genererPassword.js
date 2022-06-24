@@ -1,4 +1,4 @@
-let getPassword = ()=>{
+ exports.getPassword = ()=>{
     let chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     let Api_Key_length=11;
     let Api_Key='';
@@ -10,5 +10,8 @@ let getPassword = ()=>{
     return Api_Key
 }
 
+ exports.soldeTotal =  (a,b)=>{
+   return a - b
+}
 
-module.exports=getPassword
+

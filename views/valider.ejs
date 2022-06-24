@@ -106,7 +106,7 @@
                 </div>
                 <form action="/confirmer_le_transfert" method="post">
                     <% if (typeof data !="undefined" && data.numero) { %>
-                        <input type="hidden" name="numero" value="<%= data.numero %> ">
+                        <input type="hidden" name="numero_transfert" value="<%= data.numero %> ">
                     <% }%>
 
                     <% if (typeof data !="undefined" && data.montant_recu) { %>
@@ -116,6 +116,10 @@
                     <% if (typeof data !="undefined" && data.numero_user) { %>
                         <input type="hidden" name="numero_user" value="<%= data.numero_user%> ">
                     <% }%>
+                    <% if (typeof data !="undefined" && data.nom) { %>
+                        <input type="hidden" name="nom_transfert" value="<%= data.nom%> ">
+                    <% }%>
+                    <input type="hidden" name="type_transaction" value="transfert">
                     <div class="btn">
                         <button>Valider</button>
                     </div>

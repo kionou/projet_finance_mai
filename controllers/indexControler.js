@@ -82,11 +82,9 @@ const controlleurAccueil = class {
     }
     static PostTransfert =(req=request,res=response) =>{
        let data ={...req.body}
-       console.log('fsjbswljbuu',data);
        dataUser.AfficherUser(req.body.id)
        .then(success =>{
               res.render('valider',{success,data})
-            console.log('fdggdw',success);
         })
        .catch(error =>{
             console.log(error);
@@ -106,16 +104,25 @@ const controlleurAccueil = class {
     }
 
     static PostValider =(req=request,res=response) =>{
-                console.log('resghfhd',req.body);
-              dataUser.Transfert(req.body)
+                console.log('vaiddder',req.body);
+              dataUser.VerifierUserNumber(req.body.numero_user)
+                .then(success =>{
+                // res.render('historique',{data:req.session.user,success})
+                    console.log('suuuusolde',success.solde);
+                   dataUser.Transfert(req.body,success)
+
+                })
+                .catch(error =>{
+                    console.log(error);
+                })
     }
 
     static Historique =(req=request,res=response) =>{
         if (req.session.user) {
+            dataUser.AfficherTransfert(req.session.user.numero)
             dataUser.AfficherUser(req.session.user.id)
             .then(success =>{
                 res.render('historique',{data:req.session.user,success})
-                 console.log('fdggdw',success);
              })
             .catch(error =>{
                  console.log(error);
