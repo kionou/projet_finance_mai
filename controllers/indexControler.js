@@ -39,7 +39,7 @@ const controlleurAccueil = class {
         })
         .catch(error =>{
             console.log("errorrr",error)
-            res.render('index',{alerte:'Email ou le Mot de passe incorrect !'})
+            res.render('index',{alerte:'Numéro ou le Mot de passe incorrect !'})
         })
        }
     
@@ -58,14 +58,21 @@ const controlleurAccueil = class {
         console.log('rrfrrkrk',error ); 
         res.render('connexion',{alert:error})
        }else{
-        dataUser.VerifUserUniqu(req.body.email).then(success=>{
-            
-           dataUser.InsertionUser(req.body);
-           res.redirect('/')
+        dataUser.VerifUserUniqu(req.body.numero).then(success=>{
+             dataUser.InsertionUser(req.body)
+             .then(success =>{
+                dataUser.InsertionSolde(req.body.numero);
+                res.redirect('/')
+             })
+             .catch(error =>{
+                    console.log(error);
+             })
+
+        //    res.redirect('/')
              
         }).catch(error=>{
             console.log('non',error);
-            res.render('connexion',{alert:error})
+            res.render('connexion',{alerte:error})
         })
        }
     
@@ -104,30 +111,30 @@ const controlleurAccueil = class {
     }
 
     static PostValider =(req=request,res=response) =>{
-                console.log('vaiddder',req.body);
               dataUser.VerifierUserNumber(req.body.numero_user)
                 .then(success =>{
-                // res.render('historique',{data:req.session.user,success})
-                    console.log('suuuusolde',success.solde);
-                   dataUser.Transfert(req.body,success)
-
+                    if (success.solde<req.body. montant_recu) {
+                         console.log('vaiddder sokfvkvnwk');  
+                         res.render('transfert',{alert:"Votre credit est insuffisant pour éffectuer ce transfert"})  
+                    } else {
+                        //  res.render('historique',{data:req.session.user,success})
+                        dataUser.Transfert(req.body,success) 
+                        res.redirect('/historique')
+                    }
                 })
                 .catch(error =>{
                     console.log(error);
                 })
     }
 
-    static Historique =(req=request,res=response) =>{
+    static Historique =async (req=request,res=response) =>{
         if (req.session.user) {
-            dataUser.AfficherTransfert(req.session.user.numero)
-            dataUser.AfficherUser(req.session.user.id)
-            .then(success =>{
-                res.render('historique',{data:req.session.user,success})
-             })
-            .catch(error =>{
-                 console.log(error);
-             })
-            
+        let transfert = await dataUser.AfficherTransfert(req.session.user.numero);
+        let user = await dataUser.AfficherUser(req.session.user.id);
+        let compte = await dataUser.AfficherCompte(req.session.user.numero);
+           console.log(transfert);
+                res.render('historique',{data:req.session.user,user,transfert,compte})
+           
         } else {
             res.redirect('/')
         }

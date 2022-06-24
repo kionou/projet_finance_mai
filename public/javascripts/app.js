@@ -17,9 +17,10 @@ frais     = document.querySelector('.frais')
 
 solde.addEventListener('input',(e)=>{
     console.log("dfh",solde.value);
-    let sol= e.target.value/100
+    let sol= Math.round((e.target.value/100))
     frais.value = sol
    reduction.value= solde.value - sol;
+
 })
 
 

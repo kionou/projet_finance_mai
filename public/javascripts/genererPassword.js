@@ -14,4 +14,9 @@
    return a - b
 }
 
+exports.soldeAdd =  (a,b)=>{
+   return parseInt(a) + b
+}
+
+
 

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/transfert.css">
-    <title>transfert</title>
+    <link rel="stylesheet" href="/stylesheets/verifier.css">
+    <title>Verifier</title>
 </head>
 <body>
     <header>
@@ -35,31 +35,12 @@
     </header>
 
     <div class="container">
-        <% if (typeof alert !="undefined" && alert) { %>
-           <div class="error"><%= alert %></div>
-          <% }%>
         <div class="content">
-            <form class="formulaire" action="/transfert" method="post">
-                <input type="text" name="nom" placeholder="Nom ">
-                <input type="text" name="prenom" placeholder="Prenom ">
-                <input type="tel" name="numero" placeholder="Téléphone">
-                <input class="solde" type="tel" name="montant" placeholder="Montant Envoyé">
-                <input class="reduction" type="text" name="montant_recu" placeholder="Montant Reçu">
-                <p>Frais = 1% du montant</p>
-                <input type="hidden" class="frais" name="frais" value="">
-                <% if (typeof data !="undefined" && data.id) { %>
-                    <input type="hidden" name="id" value=" <%= data.id %>">
-                  <% }%>
-
-                  <% if (typeof data !="undefined" && data.numero) { %>
-                    <input type="hidden" name="numero_user" value="<%= data.numero %>" >
-                  <% }%>
+            <form action="/depot"  method="post" class="formulaire">
+                <input type="tel" name="numero" placeholder="Numéro dépot">
                 <button>Envoyer</button>
             </form>
         </div>
-
     </div>
-
-  <script src="/javascripts/app.js"></script>
 </body>
 </html>

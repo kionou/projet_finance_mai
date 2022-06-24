@@ -44,6 +44,11 @@
           </a>
         </h1>
       </header> -->
+      <% if (typeof alerte !="undefined" && alerte.message) { %>
+        <div class="validation">
+          <%= alerte.message %> <br>
+        </div>
+      <% }%>
       <% if (typeof alert !="undefined" && alert.nom) { %>
         <div class="validation">
           <%= alert.nom.msg %> <br>

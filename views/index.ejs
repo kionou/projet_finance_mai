@@ -49,9 +49,9 @@
           <%= alerte %> <br>
         </div>
       <% }%>
-      <% if (typeof alert !="undefined" && alert.email) { %>
+      <% if (typeof alert !="undefined" && alert.numero) { %>
         <div class="validation">
-          <%= alert.email.msg %> <br>
+          <%= alert.numero.msg %> <br>
         </div>
       <% }%>
 
@@ -64,8 +64,8 @@
       <form class="registration-form" method="post" action="/">
      
         <label>
-          <span class="label-text">Adresse Email</span>
-          <input type="text" name="email">
+          <span class="label-text">Numéro Téléphonique</span>
+          <input type="tel" name="numero">
         </label>
         <label class="password">
           <span class="label-text">Mot de passe</span>

@@ -40,19 +40,27 @@
             <div class="transfert">
                 <a href="/transfert" class="btndetail">Effectuez un transfert</a>
             </div>
+            <% if (transfert =='') { %>
+                <div class="noresult">
+                  <p>Aucun resultat trouvé(s) !</p>
+                </div>
+            <% } else if (transfert ){%>
+                <% transfert.forEach(function(transfert){ %>
             <div class="contenu">
                 <div class="detail">
-                    <p>A kionou 0757408303</p>
-                    <span>28 janvier 2022,21:33</span>
+                    <p>A <%= transfert. nom_transfert %> <%= transfert. numero_transfert %></p>
+                    <span><%= transfert. createAt %></span>
                 </div>
                 <div class="prix">
-                    <p>1000000 F FCFA</p>
-                    <a href="#">Détail</a>
+                    <p> <%= transfert. montant_recu %>F CFA</p>
+                    <a href="/detail/<%= transfert.id%>">Détail</a>
                 </div>
             </div>
+            <% }); %>
+            <% } %>
                 <div class="contenu">
                     <div class="detail">
-                        <p>A kionou 0757408303</p>
+                        <p>Addd</p>
                         <span>28 janvier 2022,21:33</span>
                     </div>
                     <div class="prix">
@@ -62,16 +70,30 @@
                 </div>
         </div>
         <div class="infouser">
-           
-            <% if (success =='') { %>
+
+            <% if (compte =='') { %>
                 <div class="noresult">
                   <p>Aucun resultat trouvé(s) !</p>
                 </div>
-            <% } else if (success ){%>
-                <% success.forEach(function(user){ %>
-            <div class="solde">
-                <p><%= user.solde %> F CFA</p>
-            </div>
+            <% } else if (compte ){%>
+                <% compte.forEach(function(compte){ %>
+                    <div class="solde">
+                        <p><%= compte.solde %> F CFA</p>
+                    </div>
+                    <div id="contenu">
+                        <p class="un">Numéro: </p>
+                        <p class="deux"><%= compte.user_numero %></p>
+                    </div>
+
+                    <% }); %>
+                    <% } %>
+
+            <% if (user =='') { %>
+                <div class="noresult">
+                  <p>Aucun resultat trouvé(s) !</p>
+                </div>
+            <% } else if (user ){%>
+                <% user.forEach(function(user){ %>
             <div id="contenu">
                 <p class="un">Nom: </p>
                 <p class="deux"><%= user.nom %></p>
@@ -83,10 +105,6 @@
             <div id="contenu">
                 <p class="un">Email: </p>
                 <p class="deux"><%= user.email %></p>
-            </div>
-            <div id="contenu">
-                <p class="un">Numéro: </p>
-                <p class="deux"><%= user.numero %></p>
             </div>
             <% }); %>
             <% } %>

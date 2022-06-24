@@ -52,13 +52,15 @@ exports.ValiderRegistre = [
 
 
 exports.validerConnection =[
-body('email')
-    .notEmpty()
-    .withMessage('e-mail est requis'),
-body('email')
-    .exists()
-    .isEmail()
-    .withMessage('email non valide'),
+body('numero')
+    .not()
+    .isEmpty()
+    .trim()
+    .escape()
+    .bail()
+    .withMessage('Numero de Telephone obligatoire')
+    .isMobilePhone()
+    .withMessage('chiffres'),
 body('password')
     .trim()
     .isLength({min:6, max:16})

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/transfert.css">
-    <title>transfert</title>
+    <link rel="stylesheet" href="/stylesheets/depot.css">
+    <title>Document</title>
 </head>
 <body>
     <header>
@@ -35,31 +35,37 @@
     </header>
 
     <div class="container">
-        <% if (typeof alert !="undefined" && alert) { %>
-           <div class="error"><%= alert %></div>
-          <% }%>
-        <div class="content">
-            <form class="formulaire" action="/transfert" method="post">
-                <input type="text" name="nom" placeholder="Nom ">
-                <input type="text" name="prenom" placeholder="Prenom ">
-                <input type="tel" name="numero" placeholder="Téléphone">
-                <input class="solde" type="tel" name="montant" placeholder="Montant Envoyé">
-                <input class="reduction" type="text" name="montant_recu" placeholder="Montant Reçu">
-                <p>Frais = 1% du montant</p>
-                <input type="hidden" class="frais" name="frais" value="">
-                <% if (typeof data !="undefined" && data.id) { %>
-                    <input type="hidden" name="id" value=" <%= data.id %>">
-                  <% }%>
+        <% if (success =='') { %>
+            <div class="noresult">
+              <p>Aucun resultat trouvé(s) !</p>
+            </div>
+        <% } else if (success ){%>
+            <% success.forEach(function(compte){ %>
+        <div class="info">
+            <div class="solde">
+                <p><%= compte.solde %> F CFA</p>
+            </div>
+            <div id="contenu">
+                <p class="un">Numéro: </p>
+                <p class="deux"><%= compte.user_numero %></p>
+            </div>
+        </div>
 
-                  <% if (typeof data !="undefined" && data.numero) { %>
-                    <input type="hidden" name="numero_user" value="<%= data.numero %>" >
-                  <% }%>
+        <div class="content">
+            <form action="/depot/valider" method="post" class="formulaire">
+                <input type="hidden" name="id" value="<%= compte.id%>" >
+                <input type="hidden" name="solde" value="<%= compte.solde%>" >
+                <input type="tel" name="montant" placeholder="Montant dépot">
+                <input type="hidden" name="numero" value="<%= compte.user_numero%>"  >
+                <input type="hidden" name="createAt" value="<%= compte.createAt%>" >
                 <button>Envoyer</button>
             </form>
         </div>
-
+        <% }); %>
+        <% } %>
+      
+      
     </div>
 
-  <script src="/javascripts/app.js"></script>
 </body>
 </html>
