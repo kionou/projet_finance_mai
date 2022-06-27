@@ -1,6 +1,6 @@
 var express = require('express');
 const controlleurAccueil = require('../controllers/indexControler');
-const { ValiderRegistre ,validerConnection} = require('../middleware/validator');
+const { ValiderRegistre ,validerConnection,validerTransfert} = require('../middleware/validator');
 var router = express.Router();
 
 
@@ -13,12 +13,13 @@ router.get('/inscription',controlleurAccueil.InscriptionGet);
 router.post('/inscription',ValiderRegistre,controlleurAccueil.InscriptionPost)
 
 router.get('/transfert',controlleurAccueil.GetTransfert);
-router.post('/transfert',controlleurAccueil.PostTransfert)
+router.post('/transfert',validerTransfert,controlleurAccueil.PostTransfert)
 
 router.get('/confirmer_le_transfert',controlleurAccueil.GetValider);
 router.post('/confirmer_le_transfert',controlleurAccueil.PostValider);
 
-router.get('/historique',controlleurAccueil.Historique)
+router.get('/historique',controlleurAccueil.Historique);
+router.get('/detail/:id',controlleurAccueil.Detail)
 
 router.get('/logout',controlleurAccueil.logout)
 

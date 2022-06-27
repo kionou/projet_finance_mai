@@ -1,25 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Cookie|Raleway:300,700,400);
-
+@import url('https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'GFS Didot', serif;
     /* transition: all 0.4s; */
-    font-family: -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif,
-        "Apple Color Emoji",
-        "Segoe UI Emoji",
-        "Segoe UI Symbol";
+   
 }
 
 .nav-content {
     margin-left: 5%;
     margin-right: 5%;
+    display: flex;
+        justify-content: space-around;
 }
 
 /* Navbar section */
@@ -31,27 +25,34 @@
     line-height: 65px;
     text-align: center;
     background-color: rgba(0, 0, 255, 0.8);
+    border: 1px solid blue;
 }
 
 .nav div.logo {
     width: 180px;
     height: 10px;
-    position: absolute;
+    /* position: absolute; */
 }
 
 .nav div.logo a {
     text-decoration: none;
-    color: #fff;
+    /* color: #fff; */
     font-size: 1.8em;
-    text-transform: uppercase;
+   
 }
 
 .nav div.logo a:hover {
     color: #c0c0c0;
 }
+.nav-list{
+    border: 1px solid red;
+        display: flex;
+            width: 500PX;
+            justify-content: space-around;
+}
 
 .nav div.main_list {
-    width: 600px;
+    /* width: 600px; */
     height: 65px;
     float: right;
 }
@@ -164,6 +165,8 @@
 
     .nav-content {
         margin: 0;
+        display: flex;
+        justify-content: space-around;
     }
 
 }
@@ -240,7 +243,7 @@
 .content  .historique{
     width: 57%;
     height: auto;
-    border: 1px solid rgb(0, 255, 187);
+    /* border: 1px solid rgb(0, 255, 187); */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -257,17 +260,18 @@
     margin-top: 10px;
         text-align: center;
         border: none;
-        background-color: rgb(23, 194, 190);
+        background-color:rgb(12, 195, 202) ;
         border-radius: 10px;
         font-size: 20px;
         font-family: 'Kaushan Script', cursive;
-        padding: 10px 17px;
+      
       
 }
 
 .transfert .btndetail {
-text-decoration: none;
+        text-decoration: none;
         color: white;
+        padding: 10px 17px;
    
 }
 
@@ -287,12 +291,24 @@ text-decoration: none;
         width: 98%;
         max-width: 450px;
         height: 120px;
-        border: 1px solid rgb(118, 193, 12);
+        border: 1px solid #dadce0;
+        border-radius: 8px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 6px;
         margin-top: 20px;
+}
+
+.noresult{
+        width: 98%;
+        max-width: 450px;
+        height: 120px;
+        border: 1px solid #dadce0;
+        padding: 6px;
+        margin-top: 20px;
+        text-align: center;
+        padding: 15px;
 }
 .contenu .detail{
         /* width: 87%;
@@ -308,8 +324,8 @@ text-decoration: none;
 }
 
 .detail span {
-    font-size: 13px;
-    color: gainsboro;
+    font-size: 14px;
+    color: #9797a5;
 }
 
 .contenu .prix {
@@ -328,6 +344,10 @@ text-decoration: none;
    color: black;
     text-decoration: none;
 }
+.prix a:hover {
+    color: rgb(43, 186, 233);
+    text-decoration: underline;
+}
 .contenu p{
     padding-bottom: 10px;
 }
@@ -335,15 +355,22 @@ text-decoration: none;
 .content .infouser{
     /* width: 40%; */
     height: 250px;
-    border: 1px solid rgb(142, 14, 78);
+    border: 1px solid #dadce0;
+    border-radius: 8px;
     padding: 20px 40px;
     text-align: center;
-  
+    top: 0;
+    position: sticky;  
+}
+.content .infouser:hover{
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 10%);
 }
 .solde{
-    font-size: 23px;
+    font-size: 25px;
     font-weight: bolder;
     padding: 20px;
+        display: flex;
+        justify-content: center;
 }
 .infouser #contenu{
     display: flex;
@@ -354,14 +381,15 @@ text-decoration: none;
 }
 
 #contenu .deux {
-    font-size: 17px;    
+    font-size: 20px; 
+    padding-left: 5px;   
 }
 
 /* container fin */
 
 @media screen and (max-width: 885px)  {
     .content .infouser {
-            width: 40%;
+            width: 45%;
     }  
     
          #contenu .un {
@@ -370,7 +398,7 @@ text-decoration: none;
          }
     
          #contenu .deux {
-             font-size: 13px;
+             font-size: 16px;
          }
 }
 
@@ -381,10 +409,21 @@ text-decoration: none;
 
          .content .infouser {
              width: 100%;
+             position: initial;
          }
 
                   .content .historique {
                       width: 100%;
                       margin-top: 15px;
                   }
+                .infouser #contenu {
+                    align-items: center;
+                    justify-content: center;
+                }
+}
+
+@media screen and (max-width: 400px) {
+    .content .infouser {
+            padding: 18px;
+        }
 }

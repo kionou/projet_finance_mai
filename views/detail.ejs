@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/detail.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="/">YourLogo</a>
+                </div>
+                <div class="main_list" id="mainListDiv">
+                    <ul>
+                        <li><a href="/">A propos</a></li>
+                        <% if (typeof data !="undefined" && data.nom) { %>
+                            <li><a href="#">
+                                    <%= data.nom %>
+                                </a></li>
+                            <% }%>
+                                <li onclick="logout()"><a href="/logout">deconnecter</a></li>
+                    </ul>
+                </div>
+                <div class="media_button">
+                    <button class="main_media_button" id="mediaButton">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <% if (transfert=='' ) { %>
+            <div class="noresult">
+                <p>Aucun resultat trouvé(s) !</p>
+            </div>
+            <% } else if (transfert){%>
+                <% transfert.forEach(function(transfert){ %>
+        <div class="content">
+            <div class="solde">
+                <p id="solde">
+                <%= transfert.montant_recu %>
+                </p>
+                <p>F CFA</p>
+            </div>
+            <div id="contenu">
+                <p class="un">type_transaction </p>
+                <p class="deux">
+                  <%= transfert.type_transaction %>
+                </p>
+            </div>
+            <div id="contenu">
+                <p class="un">Montant</p>
+                <p class="deux">
+           <%= transfert.montant_recu %>F CFA
+                </p>
+            </div>
+            <div id="contenu">
+                <p class="un">Nom ou Numero de l'expediteur</p>
+                <p class="deux">
+                 <%= transfert.numero_user %>
+
+                </p>
+            </div>
+            <div id="contenu">
+                <p class="un">Date</p>
+                <p class="deux">
+                    <%= transfert.createAt %>
+                </p>
+            </div>
+            <div id="contenu">
+                <p class="un">ID_transaction</p>
+                <p class="deux">
+                <%= transfert.ID_transaction %>
+                </p>
+            </div>
+        </div>
+        <% }); %>
+        <% } %>
+    </div>
+  <script src="/javascripts/app.js"></script>
+
+</body>
+</html>

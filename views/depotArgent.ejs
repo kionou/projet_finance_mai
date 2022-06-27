@@ -37,7 +37,11 @@
     <div class="container">
         <% if (success =='') { %>
             <div class="noresult">
-              <p>Aucun resultat trouvé(s) !</p>
+              <p>Ce numéro n'est pas lié à compte ou a été mal saisi. 
+                Donc veillez bien  vérifié le numéro et réesayer en 
+                cliquant sur ce boutton 
+            </p>
+            <a href="/depot">Essayer à nouveau</a>
             </div>
         <% } else if (success ){%>
             <% success.forEach(function(compte){ %>
@@ -56,8 +60,17 @@
                 <input type="hidden" name="id" value="<%= compte.id%>" >
                 <input type="hidden" name="solde" value="<%= compte.solde%>" >
                 <input type="tel" name="montant" placeholder="Montant dépot">
+                <% if (typeof alert !="undefined" && alert.montant) { %>
+                    <div class="validation">
+                        <p>
+                            <%= alert.montant.msg %>
+                        </p>
+                    </div>
+                    <% }%>
                 <input type="hidden" name="numero" value="<%= compte.user_numero%>"  >
                 <input type="hidden" name="createAt" value="<%= compte.createAt%>" >
+                <input type="hidden" name="type_transaction" value="depot">
+                <input type="hidden" name="numero_user" value="KIONOU COMMUNICATION">
                 <button>Envoyer</button>
             </form>
         </div>

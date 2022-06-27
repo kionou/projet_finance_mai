@@ -24,6 +24,28 @@ solde.addEventListener('input',(e)=>{
 })
 
 
+let date = document.querySelectorAll('#input');
+date.forEach(element => {
+    // console.log('rrrf',element.value);
+convertirDate(element.value)    
+});
+
+function convertirDate(a) {
+ let date = document.querySelectorAll('.date')
+ let dateLocale = new Date(a).toLocaleString('fr-FR',{
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+   });
+   console.log('dakrte',dateLocale);
+    date.forEach(element => {
+    element.innerHTML = dateLocale
+
+    });
+}
+
+
 function logout(){
     location.href = "/logout"
 }

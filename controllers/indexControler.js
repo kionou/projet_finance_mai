@@ -7,7 +7,6 @@ const bcrypt = require("bcrypt");
 
 const controlleurAccueil = class {
     static AccueilGet =(req=request,res=response) =>{
-        console.log('bonjour')
         res.render('index')
     }
 
@@ -46,7 +45,6 @@ const controlleurAccueil = class {
     }
 
     static InscriptionGet =(req=request,res=response) =>{
-        console.log('bonjour')
         res.render('connexion')
     }
 
@@ -88,17 +86,22 @@ const controlleurAccueil = class {
       
     }
     static PostTransfert =(req=request,res=response) =>{
-       let data ={...req.body}
-       dataUser.AfficherUser(req.body.id)
-       .then(success =>{
-              res.render('valider',{success,data})
-        })
-       .catch(error =>{
-            console.log(error);
-        })
-   
+          const result = validationResult(req)
+        if (!result.isEmpty() ) {
+        const error = result.mapped()
+        console.log('rrfrrkrk',error ); 
+        res.render('transfert',{alert:error})
+       }else{
+              let data ={...req.body}
+            dataUser.AfficherUser(req.body.id)
+            .then(success =>{
+                    res.render('valider',{success,data})
+                })
+            .catch(error =>{
+                    console.log(error);
+                })
+       }
 
-       
      }
 
     static GetValider =(req=request,res=response) =>{
@@ -111,20 +114,32 @@ const controlleurAccueil = class {
     }
 
     static PostValider =(req=request,res=response) =>{
-              dataUser.VerifierUserNumber(req.body.numero_user)
-                .then(success =>{
-                    if (success.solde<req.body. montant_recu) {
-                         console.log('vaiddder sokfvkvnwk');  
-                         res.render('transfert',{alert:"Votre credit est insuffisant pour éffectuer ce transfert"})  
-                    } else {
-                        //  res.render('historique',{data:req.session.user,success})
-                        dataUser.Transfert(req.body,success) 
-                        res.redirect('/historique')
-                    }
-                })
-                .catch(error =>{
-                    console.log(error);
-                })
+        dataUser.VerifierUserNumber(req.body.numero_transfert)
+        .then(resultat =>{
+                if (resultat== undefined) {
+                    res.render('transfert',{error:"Ce numero na pas de compte"})
+                } else {
+                    dataUser.VerifierUserNumber(req.body.numero_user)
+                    .then(success =>{
+                        if (parseInt(success.solde) < parseInt(req.body.montant_recu)) {
+                            res.render('transfert',{alerte:"Votre credit est insuffisant pour éffectuer ce transfert"})  
+                        }else{
+                            dataUser.Transfert(req.body,success)
+                            dataUser.AjouterMoney(resultat,req.body.montant_recu)
+                            res.redirect('/historique')
+                        }
+                                  
+                    })
+                    .catch(error =>{
+                        console.log(error);
+                    })
+   
+                }
+        })
+        .catch(error =>{
+            console.log('errronumerber',error);
+        })
+
     }
 
     static Historique =async (req=request,res=response) =>{
@@ -132,13 +147,23 @@ const controlleurAccueil = class {
         let transfert = await dataUser.AfficherTransfert(req.session.user.numero);
         let user = await dataUser.AfficherUser(req.session.user.id);
         let compte = await dataUser.AfficherCompte(req.session.user.numero);
-           console.log(transfert);
                 res.render('historique',{data:req.session.user,user,transfert,compte})
            
         } else {
             res.redirect('/')
         }
         
+    }
+
+    static Detail =  (req=request , res=response)=>{ 
+        dataUser.AfficherDetailTransfert(req.params.id)
+        .then(transfert =>{
+            console.log("detail",transfert);
+             res.render('detail',{transfert})       
+        })
+        .catch(error =>{
+          console.log(error);
+        })
     }
 
     static logout =  (req=request , res=response)=>{ 

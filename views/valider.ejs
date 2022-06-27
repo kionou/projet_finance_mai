@@ -119,6 +119,9 @@
                     <% if (typeof data !="undefined" && data.nom) { %>
                         <input type="hidden" name="nom_transfert" value="<%= data.nom%> ">
                     <% }%>
+                    <% if (typeof data !="undefined" && data.montant) { %>
+                        <input type="hidden" name="montant" value=" <%= data.montant %> ">
+                        <% }%>
                     <input type="hidden" name="type_transaction" value="transfert">
                     <div class="btn">
                         <button>Valider</button>

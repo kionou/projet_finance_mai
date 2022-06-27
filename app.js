@@ -30,7 +30,7 @@ base.connect((err) =>{
       secret: 'keyboard cat',
       resave: false,
       saveUninitialized: true,
-      cookie: { maxAge: 60000000000 }}))
+      cookie: { maxAge: 60000 * 60 * 60 * 24 }}))
 
     app.use('/', indexRouter);
     app.use('/users', usersRouter);

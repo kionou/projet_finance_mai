@@ -14,15 +14,19 @@
                 <div class="logo">
                     <a href="/">YourLogo</a>
                 </div>
-                <div class="main_list" id="mainListDiv">
-                    <ul>
-                        <li><a href="/">A propos</a></li>
-                        <% if (typeof data !="undefined" && data.nom) { %>
-                        <li><a href="#"> <%= data.nom %> </a></li>   
-                          <% }%>
-                          <li onclick="logout()"><a href="/logout" >deconnecter</a></li>
-                    </ul>
+                
+                <div class="nav-list">
+                    <% if (typeof data !="undefined" && data.nom) { %>
+                        <p>  <%= data.nom %> </p>
+                        <% }%>
+                        <div class="main_list" id="mainListDiv">
+                            <ul>
+                                <li><a href="/">A propos</a></li>
+                                <li onclick="logout()"><a href="/logout">deconnecter</a></li>
+                            </ul>
+                        </div>
                 </div>
+               
                 <div class="media_button">
                     <button class="main_media_button" id="mediaButton">
                         <span></span>
@@ -42,14 +46,25 @@
             </div>
             <% if (transfert =='') { %>
                 <div class="noresult">
-                  <p>Aucun resultat trouvé(s) !</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Sequi autem quis ipsa fugiat delectus deserunt maxime 
+                    odio minima, aspernatur magnam.
+
+                  </p>
                 </div>
             <% } else if (transfert ){%>
                 <% transfert.forEach(function(transfert){ %>
             <div class="contenu">
                 <div class="detail">
-                    <p>A <%= transfert. nom_transfert %> <%= transfert. numero_transfert %></p>
-                    <span><%= transfert. createAt %></span>
+                    <% if (transfert.type_transaction =='depot' ) { %>
+                    <p><%= transfert. type_transaction %></p>
+
+                  <% } else if (transfert.type_transaction == 'transfert' ){%>
+                    <p><%= transfert. nom_transfert %> <%= transfert. numero_user %> </p>
+                     <% } %>
+                    <span class="date"> </span>
+                    <input type="hidden" name="" id="input" value=" <%= transfert. createAt %>">
+                    
                 </div>
                 <div class="prix">
                     <p> <%= transfert. montant_recu %>F CFA</p>
@@ -58,7 +73,7 @@
             </div>
             <% }); %>
             <% } %>
-                <div class="contenu">
+                <!-- <div class="contenu">
                     <div class="detail">
                         <p>Addd</p>
                         <span>28 janvier 2022,21:33</span>
@@ -67,7 +82,7 @@
                         <p>1000000 F FCFA</p>
                         <a href="#">Détail</a>
                     </div>
-                </div>
+                </div> -->
         </div>
         <div class="infouser">
 
@@ -78,7 +93,7 @@
             <% } else if (compte ){%>
                 <% compte.forEach(function(compte){ %>
                     <div class="solde">
-                        <p><%= compte.solde %> F CFA</p>
+                        <p id="solde"><%= compte.solde %></p><p>F CFA</p>
                     </div>
                     <div id="contenu">
                         <p class="un">Numéro: </p>

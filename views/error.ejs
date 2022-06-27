@@ -1,3 +1,57 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/erreur.css">
+    <title>Erreur</title>
+</head>
+
+<body>
+<header>
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">
+                <a href="/">YourLogo</a>
+            </div>
+            <div class="main_list" id="mainListDiv">
+                <ul>
+                    <li><a href="/">Acceuil</a></li>
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="/inscription">Inscription</a></li>
+                </ul>
+            </div>
+            <div class="media_button">
+                <button class="main_media_button" id="mediaButton">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>
+    <div class="container">
+        <div class="content">
+            <div class="titre">
+                <h1> 4 0 4</h1>
+                <h2>Page non trouvée</h2>
+            </div>
+            
+            <div class="texte">
+                <p>La page que vous tentez d'afficher n'existe pas ou un autre erreur s'est produite.</p> 
+                 
+                   <p>Vous pouvez revenir à <a href="#">la page précédente</a> ou aller à <a href="#">la page d'accueil </a></p> 
+            </div>
+        </div>
+       
+
+    </div>
+   
+<script src="/javascripts/app.js"></script>
+
+</body>
+
+</html>

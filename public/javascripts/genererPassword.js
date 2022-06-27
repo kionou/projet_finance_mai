@@ -11,11 +11,13 @@
 }
 
  exports.soldeTotal =  (a,b)=>{
-   return a - b
+   return parseInt(a) - parseInt(b)
 }
 
 exports.soldeAdd =  (a,b)=>{
-   return parseInt(a) + b
+  
+  return  parseInt(a) + parseInt(b)
+
 }
 
 

@@ -35,15 +35,43 @@
     </header>
 
     <div class="container">
-        <% if (typeof alert !="undefined" && alert) { %>
-           <div class="error"><%= alert %></div>
+        <% if (typeof alerte !="undefined" && alerte) { %>
+           <div class="error"><%= alerte %></div>
           <% }%>
+            <% if (typeof error !="undefined" && error) { %>
+                <div class="error">
+                    <%= error %>
+                </div>
+                <% }%>
+        <div class="text">
+            <p>Envoyé de l'argent à vos proches en tout sécurite.</p>
+        </div>
         <div class="content">
             <form class="formulaire" action="/transfert" method="post">
                 <input type="text" name="nom" placeholder="Nom ">
+                    <% if (typeof alert !="undefined" && alert.nom) { %>
+                        <div class="validation">
+                            <%= alert.nom.msg %> <br>
+                        </div>
+                        <% }%>
                 <input type="text" name="prenom" placeholder="Prenom ">
+                <% if (typeof alert !="undefined" && alert.prenom) { %>
+                    <div class="validation">
+                        <%= alert.prenom.msg %> <br>
+                    </div>
+                    <% }%>
                 <input type="tel" name="numero" placeholder="Téléphone">
+                    <% if (typeof alert !="undefined" && alert.numero) { %>
+                        <div class="validation">
+                            <%= alert.numero.msg %> <br>
+                        </div>
+                        <% }%>
                 <input class="solde" type="tel" name="montant" placeholder="Montant Envoyé">
+                         <% if (typeof alert !="undefined" && alert.montant) { %>
+                        <div class="validation">
+                            <%= alert.montant.msg %> <br>
+                        </div>
+                        <% }%>
                 <input class="reduction" type="text" name="montant_recu" placeholder="Montant Reçu">
                 <p>Frais = 1% du montant</p>
                 <input type="hidden" class="frais" name="frais" value="">
