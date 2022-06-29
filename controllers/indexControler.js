@@ -25,7 +25,8 @@ const controlleurAccueil = class {
             let  dataUser = {
                    id:success.id, 
                    nom:success.nom,
-                   numero:success.numero 
+                   prenom:success.prenom,
+                   numero:success.numero
           }
            let passwordUser = bcrypt.compareSync(password,hash);
             if (  passwordUser){
@@ -66,7 +67,6 @@ const controlleurAccueil = class {
                     console.log(error);
              })
 
-        //    res.redirect('/')
              
         }).catch(error=>{
             console.log('non',error);
@@ -78,11 +78,11 @@ const controlleurAccueil = class {
 
 
     static GetTransfert =(req=request,res=response) =>{
-    //    if (req.session.user) {
+        if (req.session.user) {
         res.render('transfert',{data:req.session.user})
-    //    } else {
-    //     res.redirect('/')
-    //    }
+       } else {
+        res.redirect('/')
+       }
       
     }
     static PostTransfert =(req=request,res=response) =>{
@@ -90,12 +90,24 @@ const controlleurAccueil = class {
         if (!result.isEmpty() ) {
         const error = result.mapped()
         console.log('rrfrrkrk',error ); 
-        res.render('transfert',{alert:error})
+        if (req.session.user) {
+        res.render('transfert',{data:req.session.user,alert:error})
+            
+        } else {
+        res.redirect('/')
+            
+        }
        }else{
               let data ={...req.body}
             dataUser.AfficherUser(req.body.id)
             .then(success =>{
+                if (req.session.user) {
                     res.render('valider',{success,data})
+                    
+                } else {
+                    res.redirect('/')
+                    
+                }
                 })
             .catch(error =>{
                     console.log(error);
@@ -117,12 +129,20 @@ const controlleurAccueil = class {
         dataUser.VerifierUserNumber(req.body.numero_transfert)
         .then(resultat =>{
                 if (resultat== undefined) {
-                    res.render('transfert',{error:"Ce numero na pas de compte"})
+                    if (req.session.user) {
+                    res.render('transfert',{data:req.session.user,error:"Ce numero na pas de compte"})
+                    } else {
+                       res.redirect('/')    
+                    }
                 } else {
                     dataUser.VerifierUserNumber(req.body.numero_user)
                     .then(success =>{
                         if (parseInt(success.solde) < parseInt(req.body.montant_recu)) {
-                            res.render('transfert',{alerte:"Votre credit est insuffisant pour éffectuer ce transfert"})  
+                            if (req.session.user) {
+                             res.render('transfert',{data:req.session.user,alerte:"Votre credit est insuffisant pour éffectuer ce transfert"})  
+                            } else {
+                                res.redirect('/')
+                            }
                         }else{
                             dataUser.Transfert(req.body,success)
                             dataUser.AjouterMoney(resultat,req.body.montant_recu)
@@ -156,14 +176,19 @@ const controlleurAccueil = class {
     }
 
     static Detail =  (req=request , res=response)=>{ 
-        dataUser.AfficherDetailTransfert(req.params.id)
-        .then(transfert =>{
-            console.log("detail",transfert);
-             res.render('detail',{transfert})       
-        })
-        .catch(error =>{
-          console.log(error);
-        })
+        if (req.session.user) {
+            dataUser.AfficherDetailTransfert(req.params.id)
+            .then(transfert =>{
+               
+                 res.render('detail',{data:req.session.user,transfert})       
+            })
+            .catch(error =>{
+              console.log(error);
+            })
+        } else {
+            res.redirect('/')
+        }
+       
     }
 
     static logout =  (req=request , res=response)=>{ 

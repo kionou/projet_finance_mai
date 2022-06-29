@@ -8,35 +8,41 @@
     <title>Historique</title>
 </head>
 <body>
-    <header>
-        <nav class="nav">
-            <div class="nav-content">
-                <div class="logo">
-                    <a href="/">YourLogo</a>
-                </div>
-                
-                <div class="nav-list">
-                    <% if (typeof data !="undefined" && data.nom) { %>
-                        <p>  <%= data.nom %> </p>
-                        <% }%>
-                        <div class="main_list" id="mainListDiv">
-                            <ul>
-                                <li><a href="/">A propos</a></li>
-                                <li onclick="logout()"><a href="/logout">deconnecter</a></li>
-                            </ul>
-                        </div>
-                </div>
-               
-                <div class="media_button">
-                    <button class="main_media_button" id="mediaButton">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
+    <nav class="nav">
+        <div class="navbar">
+            <% if (typeof data !="undefined" && (data.nom || data.prenom )) { %>
+            <div class="logo">
+                <a href="/historique">YourLogo</a>
             </div>
-        </nav>
-    </header>
+            <div class="Image">
+                <div class="image">
+                    <img src="/images/PngItem.png" alt="">
+                </div>
+                <p> <%= data.nom %> </p>
+            </div>
+            <div class="main_list" id="mainListDiv">
+                <ul>
+                    <li class="images">
+                        <div class="image">
+                            <img src="/images/PngItem.png" alt="">
+                        </div>
+                        <p> <%= data.nom %>   <%= data.prenom %> </p>
+                       
+                    </li>
+                    <li><a href="#">A propos</a></li>
+                    <li onclick="logout()"><a href="/logout">deconnecter</a></li>
+                </ul>
+            </div>
+            <div class="media_button">
+                <button class="main_media_button" id="mediaButton">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <% }%>
+        </div>
+    </nav>
 
     <div class="container">
        <div class="content">

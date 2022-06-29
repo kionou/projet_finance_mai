@@ -4,29 +4,30 @@
     box-sizing: border-box;
 }
 
-.nav-content {
+.navbar{
     margin-left: 5%;
     margin-right: 5%;
+
+   
 }
 
 /* Navbar section */
 
-.nav {
+.nav{
     width: 100%;
     height: 65px;
-    /* position: fixed; */
     line-height: 65px;
     text-align: center;
-    background-color: rgba(0, 0, 255, 0.8);
+    background-color: #4945c4;
 }
 
-.nav div.logo {
+.nav div.logo{
     width: 180px;
     height: 10px;
     position: absolute;
 }
 
-.nav div.logo a {
+.nav div.logo a{
     text-decoration: none;
     color: #fff;
     font-size: 1.8em;
@@ -37,33 +38,65 @@
     color: #c0c0c0;
 }
 
-.nav div.main_list {
-    width: 600px;
+.nav div.main_list{
+    width: 500px;
     height: 65px;
     float: right;
+    
 }
 
-.nav div.main_list ul {
-    width: 100%;
+.nav div.main_list ul{
+    width:100%;
     height: 65px;
     display: flex;
+    justify-content: space-evenly;
     list-style: none;
 }
 
-.nav div.main_list ul li {
+.nav div.main_list ul li{
     width: 120px;
     height: 65px;
 }
 
-.nav div.main_list ul li a {
+.nav div.main_list ul li a{
     text-decoration: none;
     color: #fff;
     line-height: 65px;
     text-transform: uppercase;
 }
 
-.nav div.main_list ul li a:hover {
+.nav div.main_list ul li a:hover{
     color: #c0c0c0;
+}
+.Image{
+    display: none;
+}
+
+.images{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px !important;
+}
+.image{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #c0c0c0;
+}
+.image img{
+    width: 100%;
+    height: 100%;
+}
+.images p{
+    color: #fff;
+    line-height: 65px;
+    padding: 5px;
+    /* font-size: 18px; */
 }
 
 .nav div.media_button {
@@ -72,51 +105,51 @@
     background-color: transparent;
     position: absolute;
     right: 15px;
-    top: 12px;
+    top: 9px;
     display: none;
 }
 
 .nav div.media_button button.main_media_button {
     width: 100%;
     height: 100%;
-    background-color: transparent;
-    ;
+    background-color: transparent;;
     outline: 0;
     border: none;
     cursor: pointer;
 }
 
-.nav div.media_button button.main_media_button span {
-    width: 98%;
+.nav div.media_button button.main_media_button span{
+    width: 80%;
     height: 1px;
     display: block;
-    background-color: #fff;
     margin-top: 9px;
     margin-bottom: 10px;
+    background-color: #fff;
 }
 
-.nav div.media_button button.main_media_button:hover span:nth-of-type(1) {
+.nav div.media_button button.main_media_button:hover span:nth-of-type(1){
     transform: rotateY(180deg);
     transition: all 0.5s;
-    background-color: #c0c0c0;
+    background-color: #fff;
 }
 
-.nav div.media_button button.main_media_button:hover span:nth-of-type(2) {
+.nav div.media_button button.main_media_button:hover span:nth-of-type(2){
     transform: rotateY(180deg);
     transition: all 0.4s;
-    background-color: #c0c0c0;
+    background-color: #fff;
 }
 
-.nav div.media_button button.main_media_button:hover span:nth-of-type(3) {
+.nav div.media_button button.main_media_button:hover span:nth-of-type(3){
     transform: rotateY(180deg);
     transition: all 0.3s;
-    background-color: #c0c0c0;
+    background-color: #fff;
 }
 
 .nav div.media_button button.active span:nth-of-type(1) {
     transform: rotate3d(0, 0, 1, 45deg);
     position: absolute;
     margin: 0;
+    background-color: #fff;
 }
 
 .nav div.media_button button.active span:nth-of-type(2) {
@@ -127,80 +160,126 @@
     transform: rotate3d(0, 0, 1, -45deg);
     position: absolute;
     margin: 0;
+    background-color: #fff;
 }
 
 .nav div.media_button button.active:hover span:nth-of-type(1) {
-    transform: rotate3d(0, 0, 1, 20deg);
+    transform: rotate3d(0, 0, 1, 50deg);
+    background-color: #fff;
 }
 
 .nav div.media_button button.active:hover span:nth-of-type(3) {
-    transform: rotate3d(0, 0, 1, -20deg);
+    transform: rotate3d(0, 0, 1, -50deg);
+    background-color: #fff;
+
 }
 
-/* Home section */
 
-.home {
-    width: 100%;
-    height: 100vh;
-    background-color: #ddd;
-}
 
 /* Medai qurey section */
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-
-    .nav-content {
+    
+    .navbar{
         margin: 0;
+      
     }
-
+    
 }
 
 @media screen and (max-width:768px) {
-
-    .nav-content {
+    
+    .navbar{
         margin: 0;
     }
-
-    .nav div.logo {
+    
+    .nav div.logo{
         margin-left: 15px;
     }
-
-    .nav div.main_list {
+    
+    .nav div.main_list{
         width: 100%;
         margin-top: 65px;
         height: 0px;
         overflow: hidden;
     }
+    
+    .nav div.show_list{
+        height: 70px;
+        background-color:#4945c4 ; 
 
-    .nav div.show_list {
-        height: 200px;
     }
-
-    .nav div.main_list ul {
+    
+    .nav div.main_list ul{
         flex-direction: column;
-        width: 100%;
-        height: 200px;
-        top: 80px;
-        right: 0;
-        left: 0;
     }
-
-    .nav div.main_list ul li {
-        width: 100%;
+    
+    .nav div.main_list ul li{
         height: 40px;
-        background-color: rgba(0, 0, 255, 0.8);
+       
     }
-
-    .nav div.main_list ul li a {
-        text-align: center;
-        line-height: 40px;
-        width: 100%;
+    
+    .nav div.main_list ul li a{
         height: 40px;
-        display: table;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 33px;
+        font-size: 14px;
     }
-
-    .nav div.media_button {
+    
+    .nav div.media_button{
         display: block;
+    }
+    .images{
+        display: none;
+    }
+
+    .Image{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        right: 85px;
+    }
+    .Image p{
+        color: #fff;
+        line-height: 65px;
+        padding-left: 5px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width:476px){
+    .image{
+        width: 55px;
+        height: 55px;
+    }
+    .nav div.logo{
+        margin-left: 0;
+    }
+    .nav div.logo {
+        width: 0;
+        padding-left: 10px;
+    }
+    .nav div.logo a {
+        font-size: 1.3em;
+    }
+}
+
+@media screen and (max-width:410px){
+    .image{
+        width: 47px;
+        height: 47px;
+    }
+    .nav div.logo{
+        margin-left: 0;
+    }
+    .nav div.logo {
+        width: 0;
+        padding-left: 10px;
+    }
+    .nav div.logo a {
+        font-size: 1em;
     }
 }
 
@@ -252,7 +331,7 @@
 
 
 .formulaire input:hover {
-    border: 1px solid rgb(23, 134, 194);
+    border: 1px solid #4945c4;
 }
 
 .formulaire button {
@@ -261,7 +340,7 @@
     margin-top: 25px ;
     text-align: center;
     border: none;
-    background-color: rgb(23, 134, 194);
+    background-color: #4945c4;
     color: white;
     border-radius: 5px;
     font-size: 23px;
@@ -270,8 +349,8 @@
 
 .formulaire button:hover {
     background-color: white;
-    color: rgb(23, 134, 194);
-    border: 1px solid rgb(23, 134, 194);
+    color: #4945c4;
+    border: 1px solid #4945c4;
     cursor: pointer;
 }
 .text{

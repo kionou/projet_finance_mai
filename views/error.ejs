@@ -10,17 +10,29 @@
 </head>
 
 <body>
-<header>
     <nav class="nav">
-        <div class="nav-content">
+        <div class="navbar">
+            <% if (typeof data !="undefined" && (data.nom || data.prenom )) { %>
             <div class="logo">
-                <a href="/">YourLogo</a>
+                <a href="/historique">YourLogo</a>
+            </div>
+            <div class="Image">
+                <div class="image">
+                    <img src="/images/PngItem.png" alt="">
+                </div>
+                <p> <%= data.nom %> </p>
             </div>
             <div class="main_list" id="mainListDiv">
                 <ul>
-                    <li><a href="/">Acceuil</a></li>
+                    <li class="images">
+                        <div class="image">
+                            <img src="/images/PngItem.png" alt="">
+                        </div>
+                        <p> <%= data.nom %>   <%= data.prenom %> </p>
+                       
+                    </li>
                     <li><a href="#">A propos</a></li>
-                    <li><a href="/inscription">Inscription</a></li>
+                    <li onclick="logout()"><a href="/logout">deconnecter</a></li>
                 </ul>
             </div>
             <div class="media_button">
@@ -30,9 +42,9 @@
                     <span></span>
                 </button>
             </div>
+            <% }%>
         </div>
     </nav>
-</header>
     <div class="container">
         <div class="content">
             <div class="titre">
@@ -43,7 +55,7 @@
             <div class="texte">
                 <p>La page que vous tentez d'afficher n'existe pas ou un autre erreur s'est produite.</p> 
                  
-                   <p>Vous pouvez revenir à <a href="#">la page précédente</a> ou aller à <a href="#">la page d'accueil </a></p> 
+                   <p>Vous pouvez revenir à <a href="#">la page précédente</a> ou aller à <a href="/historique">la page d'accueil </a></p> 
             </div>
         </div>
        
