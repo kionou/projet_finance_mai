@@ -152,7 +152,7 @@ const controlleurAccueil = class {
         } else {
             res.redirect('/')
         }
-        
+         
     }
 
     static Detail =  (req=request , res=response)=>{ 
