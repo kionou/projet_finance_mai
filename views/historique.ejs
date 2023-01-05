@@ -12,7 +12,10 @@
         <div class="navbar">
             <% if (typeof data !="undefined" && (data.nom || data.prenom )) { %>
             <div class="logo">
-                <a href="/historique">YourLogo</a>
+                <a href="/historique">
+                    <p>NITA</p>
+          <p>transfert d'argent</p>
+                </a>
             </div>
             <div class="Image">
                 <div class="image">
@@ -62,10 +65,10 @@
                 <% transfert.forEach(function(transfert){ %>
             <div class="contenu">
                 <div class="detail">
-                    <% if (transfert.type_transaction =='depot' ) { %>
+                    <% if (transfert.type_transaction !='transfert' ) { %>
                     <p><%= transfert. type_transaction %></p>
 
-                  <% } else if (transfert.type_transaction == 'transfert' ){%>
+                  <% } else if (typeof data !="undefined" && data.numero ){%>
                     <p><%= transfert. nom_transfert %> <%= transfert. numero_user %> </p>
                      <% } %>
                     <span class="date"> </span>

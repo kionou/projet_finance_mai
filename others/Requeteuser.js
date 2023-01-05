@@ -5,8 +5,24 @@ const { getPassword,soldeTotal, soldeAdd } = require("../public/javascripts/gene
 
 const dataUser = class{
 
+    static AllUser = (into)=>{
+
+        return new Promise((resolve,reject)=>{
+             let  sqle = "SELECT * FROM `users`  ";
+             base.query(sqle,[into],(error,result)=>{
+                if (result) {
+                    resolve(result)
+                } else {
+                
+                    reject(error)
+                }
+            })
+        })
+ 
+    }
+
     static VerifUserUniqu = (into)=>{
-      
+
         return new Promise((resolve,reject)=>{
              let  sqle = "SELECT * FROM `users` WHERE `numero`= ? ";
              base.query(sqle,[into],(error,result)=>{

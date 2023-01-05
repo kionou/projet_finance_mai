@@ -12,15 +12,16 @@
         <nav class="nav">
             <div class="nav-content">
                 <div class="logo">
-                    <a href="/">YourLogo</a>
+                    <a href="/agent/transaction">
+                        <p>NITA</p>
+          <p>transfert d'argent</p>
+                    </a>
                 </div>
                 <div class="main_list" id="mainListDiv">
                     <ul>
                         <li><a href="/">A propos</a></li>
-                        <% if (typeof data !="undefined" && data.nom) { %>
-                        <li><a href="#"> <%= data.nom %> </a></li>   
-                          <% }%>
-                          <li onclick="logout()"><a href="/logout" >deconnecter</a></li>
+                        
+                          <li ><a href="/agent/logout" >deconnecter</a></li>
                     </ul>
                 </div>
                 <div class="media_button">
@@ -41,13 +42,17 @@
                 Donc veillez bien  vérifié le numéro et réesayer en 
                 cliquant sur ce boutton 
             </p>
-            <a href="/depot">Essayer à nouveau</a>
+            <a href="/agent/transaction">Essayer à nouveau</a>
             </div>
         <% } else if (success ){%>
             <% success.forEach(function(compte){ %>
         <div class="info">
+            <% if (typeof type !="undefined" && type) { %>
+                <p > Vous allez effectué un <%= type %> </p>   
+                  <% }%>
             <div class="solde">
                 <p><%= compte.solde %> F CFA</p>
+                
             </div>
             <div id="contenu">
                 <p class="un">Numéro: </p>
@@ -56,10 +61,10 @@
         </div>
 
         <div class="content">
-            <form action="/depot/valider" method="post" class="formulaire">
+            <form action="/agent/valider" method="post" class="formulaire">
                 <input type="hidden" name="id" value="<%= compte.id%>" >
                 <input type="hidden" name="solde" value="<%= compte.solde%>" >
-                <input type="tel" name="montant" placeholder="Montant dépot">
+                <input type="tel" name="montant" placeholder="Montant ">
                 <% if (typeof alert !="undefined" && alert.montant) { %>
                     <div class="validation">
                         <p>
@@ -68,9 +73,13 @@
                     </div>
                     <% }%>
                 <input type="hidden" name="numero" value="<%= compte.user_numero%>"  >
-                <input type="hidden" name="createAt" value="<%= compte.createAt%>" >
-                <input type="hidden" name="type_transaction" value="depot">
-                <input type="hidden" name="numero_user" value="KIONOU COMMUNICATION">
+                <% if (typeof type !="undefined" && type) { %>
+                    <input type="hidden" name="type_transaction" value="<%= type%>">  
+                      <% }%>
+                      <% if (typeof data !="undefined" && data.nom) { %>
+                <input type="hidden" name="numero_user" value="<%= data.nom %>">
+                      
+                          <% }%>
                 <button>Envoyer</button>
             </form>
         </div>

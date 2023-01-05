@@ -13,15 +13,13 @@
   <div class="navbar">
     <div class="logo">
       <a href="/historique">
-          <p>NITA</p>
+        <p>NITA</p>
           <p>transfert d'argent</p>
       </a>
     </div>
     <div class="main_list" id="mainListDiv">
       <ul>
         <li><a href="/historique">Accueil</a></li>
-        <li><a href="/">A propos</a></li>
-        <li><a href="/inscription">Inscription</a></li>
       </ul>
     </div>
     <div class="media_button">
@@ -38,13 +36,7 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, velit!</p>
     </div>
     <div class="formulaire">
-      <!-- <header>
-        <h1>
-          <a href="#">
-            <img src="http://tfgms.com/sandbox/dailyui/logo-1.png" alt="Authentic Collection">
-          </a>
-        </h1>
-      </header> -->
+    
       <% if (typeof alerte !="undefined" && alerte) { %>
         <div class="validation">
           <%= alerte %> <br>
@@ -62,11 +54,11 @@
         </div>
       <% }%>
       <h1 class="text-center">Register</h1>
-      <form class="registration-form" method="post" action="/">
+      <form class="registration-form" method="post" action="/agent">
      
         <label>
-          <span class="label-text">Numéro Téléphonique</span>
-          <input type="tel" name="numero">
+          <span class="label-text">Code agent</span>
+          <input type="text" name="code">
         </label>
         <label class="password">
           <span class="label-text">Mot de passe</span>

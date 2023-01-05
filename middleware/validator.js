@@ -130,3 +130,54 @@ exports.validerDepotMontant=[
         .withMessage('Montant  obligatoire')
        
 ]
+
+exports.ValiderAgence = [
+    body('nom')
+        .not()
+        .isEmpty()
+        .trim()
+        .escape()
+        .bail()
+        .withMessage('Nom ne peut pas être vide')
+        .isLength({min:5 , max:30})
+        .withMessage('Minimun 5 caractères obligatoires'),
+    body('numero')
+        .not()
+        .isEmpty()
+        .trim()
+        .escape()
+        .bail()
+        .withMessage('Numéro de Téléphone obligatoire'),
+        // .isMobilePhone(),
+        // .withMessage('chiffres'),
+        // .isAlpha()
+        // .withMessage('Pas de chaine de caractères')
+        body('localisation')
+        .not()
+        .isEmpty()
+        .trim()
+        .escape()
+        .bail()
+        .withMessage('localisation ne peut pas être vide')
+        .isLength({min:5 , max:30})
+        .withMessage('Minimun 5 caractères obligatoires'),   
+    body('password')
+        .trim()
+        .isLength({min:6, max:16})
+       .withMessage('Le mot de passe doit comporter entre 6 et 16 caractères')
+]
+
+exports.validerConnectionAgnece =[
+    body('code')
+        .not()
+        .isEmpty()
+        .trim()
+        .escape()
+        .bail()
+        .withMessage('code de Téléphone obligatoire'),
+    body('password')
+        .trim()
+        .isLength({min:6, max:16})
+       .withMessage('Le mot de passe doit comporter entre 6 et 16 caractères')
+    
+    ]

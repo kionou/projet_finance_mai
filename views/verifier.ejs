@@ -10,27 +10,17 @@
 <body>
     <nav class="nav">
         <div class="navbar">
-            <% if (typeof data !="undefined" && (data.nom || data.prenom )) { %>
+            <% if (typeof data !="undefined" && (data.id || data.code )) { %>
             <div class="logo">
-                <a href="/historique">YourLogo</a>
-            </div>
-            <div class="Image">
-                <div class="image">
-                    <img src="/images/PngItem.png" alt="">
-                </div>
-                <p> <%= data.nom %> </p>
+                <a href="/agent/transaction">
+                    <p>NITA</p>
+                 <p>transfert d'argent</p>
+                </a>
             </div>
             <div class="main_list" id="mainListDiv">
                 <ul>
-                    <li class="images">
-                        <div class="image">
-                            <img src="/images/PngItem.png" alt="">
-                        </div>
-                        <p> <%= data.nom %>   <%= data.prenom %> </p>
-                       
-                    </li>
                     <li><a href="#">A propos</a></li>
-                    <li onclick="logout()"><a href="/logout">deconnecter</a></li>
+                    <li ><a href="/agent/logout">deconnecter</a></li>
                 </ul>
             </div>
             <div class="media_button">
@@ -46,14 +36,21 @@
 
     <div class="container">
         <div class="text">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                 Sed deserunt ut ad voluptatem recusandae, inventore 
-                 placeat accusantium voluptas, ex, quaerat non quidem 
-                 ipsam nesciunt tenetur.
+            <% if (typeof data !="undefined" && (data.id || data.nom )) { %>
+            <p>
+                   AGENCE <%= data.nom %>
+
             </p>
+            <% }%>
+
         </div>
         <div class="content">
-            <form action="/depot"  method="post" class="formulaire">
+            <form action="/agent/transaction"  method="post" class="formulaire">
+                <select id="type_transaction" name="type_transaction" class="input">
+                    <option value="" disabled selected>-- TYPE DE TRANSACTION --</option>
+                    <option value="depot">Depot</option>
+                    <option value="retrait">Retrait</option>  
+                  </select>
                 <input type="tel" name="numero" placeholder="Numéro dépot">
                 <% if (typeof alert !="undefined" && alert.numero) { %>
                  <div class="validation">

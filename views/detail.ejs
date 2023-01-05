@@ -12,13 +12,10 @@
         <div class="navbar">
             <% if (typeof data !="undefined" && (data.nom || data.prenom )) { %>
             <div class="logo">
-                <a href="/historique">YourLogo</a>
-            </div>
-            <div class="Image">
-                <div class="image">
-                    <img src="/images/PngItem.png" alt="">
-                </div>
-                <p> <%= data.nom %> </p>
+                <a href="/historique">
+                    <p>NITA</p>
+          <p>transfert d'argent</p>
+                </a>
             </div>
             <div class="main_list" id="mainListDiv">
                 <ul>
@@ -71,7 +68,11 @@
                 </p>
             </div>
             <div id="contenu">
-                <p class="un">Nom ou Numero de l'expediteur</p>
+                <% if (transfert.type_transaction !='transfert' ) { %>
+                <p class="un"> Nom de l'agence</p>
+                <% } else {%>
+                <p class="un"> Nom de l'expediteur</p>
+                <% }; %>
                 <p class="deux">
                  <%= transfert.numero_user %>
 

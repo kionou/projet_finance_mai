@@ -20,10 +20,16 @@ solde.addEventListener('input',(e)=>{
 
 })
 
+let dates = document.querySelectorAll('.date');
 
 let date = document.querySelectorAll('#input');
-date.forEach(element => {
-   convertirDate(element.value)    
+date.forEach(el => {
+    dates.forEach(element => {
+    element.innerHTML = convertirDate(el.value) 
+    console.log(convertirDate(el.value));
+
+        
+    });   
 });
 let DateInput = document.querySelector('#detailDate')
 let Datedetail = document.querySelector('.detailDate');
@@ -38,11 +44,10 @@ function convertirDate(a) {
     month: 'long',
     day: 'numeric',
    });
-   console.log('dakrte',dateLocale);
-    date.forEach(element => {
-    element.innerHTML = dateLocale
+//    console.log('dakrte',dateLocale);
+   return dateLocale
+ 
 
-    });
 }
 
 

@@ -7,6 +7,10 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 let depotRouter = require('./routes/depot.js')
+let agentRouter = require('./routes/agent')
+let adminRouter = require('./routes/admin')
+
+
 const base = require('./others/database');
 const session = require('express-session');
 
@@ -35,6 +39,10 @@ base.connect((err) =>{
     app.use('/', indexRouter);
     app.use('/users', usersRouter);
     app.use('/depot',depotRouter)
+    app.use('/agent',agentRouter)
+    app.use('/admin',adminRouter)
+
+
 
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {

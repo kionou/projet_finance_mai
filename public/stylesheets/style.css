@@ -1,10 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Cookie|Raleway:300,700,400);
-/* *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 
-} */
 
 * {
   margin: 0;
@@ -32,22 +27,20 @@ html {
 .nav {
   width: 100%;
   height: 65px;
-  line-height: 65px;
   text-align: center;
   background-color: #4945c4;
 }
 
 .nav div.logo {
   width: 180px;
-  height: 10px;
+  height: 65px;
   position: absolute;
+  padding: 10px;
 }
 
 .nav div.logo a {
   text-decoration: none;
   color: #fff;
-  font-size: 1.8em;
-  text-transform: uppercase;
 }
 
 .nav div.logo a:hover {
@@ -55,10 +48,8 @@ html {
 }
 
 .nav div.main_list {
-  /* width: 600px; */
   height: 65px;
   float: right;
-  /* margin-right: 30px; */
 }
 
 .nav div.main_list ul {
